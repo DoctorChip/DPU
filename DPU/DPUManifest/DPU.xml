@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+
+	<Id>11a7733f-a35d-4874-88bd-fb8fafcff101</Id>
+	<Version>1.0.0.0</Version>
+	<ProviderName>Seneca Software Ltd</ProviderName>
+	<DefaultLocale>en-GB</DefaultLocale>
+	<DisplayName DefaultValue="Auto Password Utility" />
+	<Description DefaultValue="Automatically apply password encryption to a sheet on open."/>
+	<IconUrl DefaultValue="~remoteAppUrl/Images/icon-32.png" />
+	<HighResolutionIconUrl DefaultValue="~remoteAppUrl/Images/hi-res-icon.png"/>
+
+	<AppDomains>
+		<AppDomain>AppDomain1</AppDomain>
+		<AppDomain>AppDomain2</AppDomain>
+		<AppDomain>AppDomain3</AppDomain>
+	</AppDomains>
+
+	<Hosts>
+		<Host Name="Workbook" />
+	</Hosts>
+	<DefaultSettings>
+		<SourceLocation DefaultValue="~remoteAppUrl/Home.html" />
+	</DefaultSettings>
+
+	<Permissions>ReadWriteDocument</Permissions>
+	<VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+
+		<Hosts>
+			<Host xsi:type="Workbook">
+				<DesktopFormFactor>
+					<FunctionFile resid="Contoso.DesktopFunctionFile.Url" />
+
+					<ExtensionPoint xsi:type="PrimaryCommandSurface">
+						<OfficeTab id="TabHome">
+							<Group id="Contoso.Group1">
+								<Label resid="Contoso.Group1Label" />
+								<Icon>
+									<bt:Image size="16" resid="Contoso.tpicon_16x16" />
+									<bt:Image size="32" resid="Contoso.tpicon_32x32" />
+									<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+								</Icon>
+
+								<Control xsi:type="Button" id="ToggleProtection">
+									<Label resid="ProtectionButtonLabel"/>
+									<Supertip>
+										<Title resid="ProtectionButtonLabel"/>
+										<Description resid="ProtectionButtonToolTip"/>
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
+										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
+										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>toggleProtection</FunctionName>
+									</Action>
+								</Control>
+							</Group>
+						</OfficeTab>
+					</ExtensionPoint>
+				</DesktopFormFactor>
+			</Host>
+		</Hosts>
+
+		<Resources>
+			<bt:Images>
+				<bt:Image id="Contoso.tpicon_16x16" DefaultValue="~remoteAppUrl/Images/icon-16.png" />
+				<bt:Image id="Contoso.tpicon_32x32" DefaultValue="~remoteAppUrl/Images/icon-32.png" />
+				<bt:Image id="Contoso.tpicon_80x80" DefaultValue="~remoteAppUrl/Images/assets/icon-80.png" />
+			</bt:Images>
+			<bt:Urls>
+				<bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/Functions/FunctionFile.html" />
+			</bt:Urls>
+			<bt:ShortStrings>
+				<bt:String id="Contoso.Group1Label" DefaultValue="Seneca Software" />
+				<bt:String id="ProtectionButtonLabel" DefaultValue="Toggle Password" />
+			</bt:ShortStrings>
+			<bt:LongStrings>
+				<bt:String id="ProtectionButtonToolTip" DefaultValue="Click to protect or unprotect the current worksheet." />
+			</bt:LongStrings>			
+		</Resources>
+	</VersionOverrides>
+</OfficeApp>
